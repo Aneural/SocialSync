@@ -28,14 +28,13 @@
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-	  <!-- Do not change NSAllowsArbitraryLoads to true, or you will risk app rejection! -->
 		<key>NSAllowsArbitraryLoads</key>
 		<false/>
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -50,5 +49,35 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>GoogleSansCode-ExtraBold.ttf</string>
+		<string>GoogleSansCode-MediumItalic.ttf</string>
+		<string>GoogleSansCode-SemiBoldItalic.ttf</string>
+		<string>GoogleSansCode-ExtraBoldItalic.ttf</string>
+		<string>GoogleSansCode-Regular.ttf</string>
+		<string>GoogleSansCode-Medium.ttf</string>
+		<string>GoogleSansCode-Bold.ttf</string>
+		<string>GoogleSansCode-SemiBold.ttf</string>
+		<string>GoogleSansCode-VariableFont_wght.ttf</string>
+		<string>Mulish-ExtraBold.ttf</string>
+		<string>Mulish-BlackItalic.ttf</string>
+		<string>Mulish-ExtraLightItalic.ttf</string>
+		<string>Mulish-Italic-VariableFont_wght.ttf</string>
+		<string>Mulish-SemiBoldItalic.ttf</string>
+		<string>Mulish-LightItalic.ttf</string>
+		<string>Mulish-VariableFont_wght.ttf</string>
+		<string>Mulish-Black.ttf</string>
+		<string>Mulish-SemiBold.ttf</string>
+		<string>Mulish-Medium.ttf</string>
+		<string>Mulish-Bold.ttf</string>
+		<string>Mulish-Regular.ttf</string>
+		<string>Mulish-ExtraLight.ttf</string>
+		<string>Mulish-ExtraBoldItalic.ttf</string>
+		<string>Mulish-BoldItalic.ttf</string>
+		<string>Mulish-MediumItalic.ttf</string>
+		<string>Mulish-Light.ttf</string>
+		<string>Mulish-Italic.ttf</string>
+	</array>
 </dict>
 </plist>

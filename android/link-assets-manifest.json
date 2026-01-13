@@ -1,0 +1,113 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/GoogleSansCode-ExtraBold.ttf",
+      "sha1": "fe71045eb97e05ba291f3ee11f2e7b2d8174ccbc"
+    },
+    {
+      "path": "src/assets/fonts/GoogleSansCode-MediumItalic.ttf",
+      "sha1": "3b02073a23a792eee049987344bc32cb1299414f"
+    },
+    {
+      "path": "src/assets/fonts/Mulish-ExtraBold.ttf",
+      "sha1": "9b3870f27552e84bde98622ca2a0a305faca0ee9"
+    },
+    {
+      "path": "src/assets/fonts/Mulish-BlackItalic.ttf",
+      "sha1": "de71a5c69ea9f82df1c9ac8cc08a3608a380e9bc"
+    },
+    {
+      "path": "src/assets/fonts/Mulish-ExtraLightItalic.ttf",
+      "sha1": "c084fd0c20a4d477f5e53113634dad682a371653"
+    },
+    {
+      "path": "src/assets/fonts/Mulish-Italic-VariableFont_wght.ttf",
+      "sha1": "053f3e002fd9199dc2aaba6a56025e06437a83c3"
+    },
+    {
+      "path": "src/assets/fonts/GoogleSansCode-SemiBoldItalic.ttf",
+      "sha1": "a4cf19b83d7d57f75e6a45cb20afff7ea30eaeae"
+    },
+    {
+      "path": "src/assets/fonts/Mulish-SemiBoldItalic.ttf",
+      "sha1": "a8f0bfa04acc84a8cd4de201413b1e75c6903bcf"
+    },
+    {
+      "path": "src/assets/fonts/Mulish-LightItalic.ttf",
+      "sha1": "2587bcac772d07e8ce23020b4c2a7ed925c14e28"
+    },
+    {
+      "path": "src/assets/fonts/Mulish-VariableFont_wght.ttf",
+      "sha1": "f27cad28935e92dc55256b0edc62d32d8a0dc98d"
+    },
+    {
+      "path": "src/assets/fonts/Mulish-Black.ttf",
+      "sha1": "e059c7c66354ff70dbf4a33486c80ecda1fe52d3"
+    },
+    {
+      "path": "src/assets/fonts/GoogleSansCode-ExtraBoldItalic.ttf",
+      "sha1": "43335a5b608368ca0e1633429a3c2dd504ea36f2"
+    },
+    {
+      "path": "src/assets/fonts/Mulish-SemiBold.ttf",
+      "sha1": "05e283ae813f9332edc84daaa7f35f34afca1c3a"
+    },
+    {
+      "path": "src/assets/fonts/Mulish-Medium.ttf",
+      "sha1": "1081586d1cf807062b9cead5c3cb1c9f4dacff5a"
+    },
+    {
+      "path": "src/assets/fonts/GoogleSansCode-Regular.ttf",
+      "sha1": "07e57d7aa3ab62f6472e3cb21d899adba80ec9b9"
+    },
+    {
+      "path": "src/assets/fonts/Mulish-Bold.ttf",
+      "sha1": "f3888ae5a70ddae97b73cfcdec86b51de4ead17e"
+    },
+    {
+      "path": "src/assets/fonts/GoogleSansCode-Medium.ttf",
+      "sha1": "25bc7b19c726bd3a05875b0ed4d3ff78ed9d4dfd"
+    },
+    {
+      "path": "src/assets/fonts/GoogleSansCode-Bold.ttf",
+      "sha1": "f82a0b00d60bc995e565f75225f3e0e3958e0d9a"
+    },
+    {
+      "path": "src/assets/fonts/Mulish-Regular.ttf",
+      "sha1": "8202762dfb9b01c8086660c73043c53ab127bd49"
+    },
+    {
+      "path": "src/assets/fonts/Mulish-ExtraLight.ttf",
+      "sha1": "b5cad483a18af906b077b1c1c918047fa213467b"
+    },
+    {
+      "path": "src/assets/fonts/Mulish-ExtraBoldItalic.ttf",
+      "sha1": "0b375112a01d015a4d44a87943eee3e3aa6270c1"
+    },
+    {
+      "path": "src/assets/fonts/Mulish-BoldItalic.ttf",
+      "sha1": "2a5e18a5537eda967e86b426f5fa1e3a7399c2d5"
+    },
+    {
+      "path": "src/assets/fonts/Mulish-MediumItalic.ttf",
+      "sha1": "4ddab046f8453c6aaf56a56799f3ef26db6b696d"
+    },
+    {
+      "path": "src/assets/fonts/Mulish-Light.ttf",
+      "sha1": "b56104147f5eb3495919c77e0927ee9487a86c55"
+    },
+    {
+      "path": "src/assets/fonts/Mulish-Italic.ttf",
+      "sha1": "1bb4ec67ea1f42a03d3f2e33f4c98c8821afc442"
+    },
+    {
+      "path": "src/assets/fonts/GoogleSansCode-SemiBold.ttf",
+      "sha1": "f434610f5f60a006633d5446cb9f44877407aff3"
+    },
+    {
+      "path": "src/assets/fonts/GoogleSansCode-VariableFont_wght.ttf",
+      "sha1": "fde9f4f25559916f7fe06fc3c5cebc975b96c49a"
+    }
+  ]
+}
