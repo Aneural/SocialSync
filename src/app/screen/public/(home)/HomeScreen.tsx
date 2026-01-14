@@ -13,7 +13,7 @@ import BtnNav from '@/app/components/BtnNav';
 import OverlayShadow from '@/app/components/overlayShadow';
 
 // media
-import SycnLogo from '@/assets/sync.svg';
+import SyncLogo from '@/assets/sync.svg';
 import Bg from '@/assets/bg_home.jpg'
 
 type Props = {
@@ -39,7 +39,7 @@ const HomeScreen = ({ navigation } : Props) => {
           <OverlayShadow style={styles.overlay}>
             <View style={styles.textCard}>
               <View style={ styles.logoContainer }>
-                  <SycnLogo width={32} height={32} fill={'white'} style={{alignSelf:'center'}}/>
+                  <SyncLogo width={32} height={32} fill={'white'} style={{alignSelf:'center'}}/>
                   <Text style={styles.logoText}>SocialSync</Text>
               </View>
               <Text style={styles.homeTextTitle}>

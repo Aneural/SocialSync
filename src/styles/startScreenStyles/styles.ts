@@ -9,8 +9,10 @@ const stylesMain = (c: themeColors) => StyleSheet.create({
     height: '100%',
   },
   childHeaderTitle: {
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    gap: 7,
   },
   childHeaderOptions: {
     flexDirection: 'row',
@@ -29,18 +31,27 @@ const stylesMain = (c: themeColors) => StyleSheet.create({
     borderRadius: 18,
     gap: 25,
     backgroundColor: c.inputContainer,
-    elevation: 10,
+    elevation: 8,
+    shadowColor: c.inputContainerShadow,
   },
   icons: {
     width: 32,
     height: 32,
   },
   btnStyle: {
+    height: 44,
+    backgroundColor: c.icoStrtBg,
+    borderColor: c.icoStrtBorder,
+    justifyContent: 'center',
+    alignContent: 'center',
+    borderWidth: 0.7,
+    borderRadius: 22,
+    padding: 3,
   },
   title: {
     fontFamily: 'GoogleSansCode-Bold',
-    fontSize: 14,
-    color: c.text,
+    fontSize: 16,
+    color: c.strtTitle,
   },
   inputBox: {
     width: '95%',
@@ -49,6 +60,7 @@ const stylesMain = (c: themeColors) => StyleSheet.create({
     borderWidth: 1,
     borderColor: 'black',
     borderRadius: 12,
+    color: c.text
   },
   btnContainer: {
     width: '95%',
@@ -79,8 +91,13 @@ const stylesMain = (c: themeColors) => StyleSheet.create({
     color: c.cardText,
   },
   progressWrap: {
-    width: '80%',
-    marginTop: 10,
+    backgroundColor: c.bg,
+    borderRadius: 4,
+    padding: 12,
+    width: '85%',
+    height: 150,
+    alignContent: 'center',
+    justifyContent: 'center',
   },
   progressTrack: {
     height: 25,
@@ -104,6 +121,34 @@ const stylesMain = (c: themeColors) => StyleSheet.create({
     fontFamily:'GoogleSansCode-Bold',
     color: c.text,
   },
+  absolute: {
+    position: "absolute",
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(27, 27, 28, 0.55)',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0
+  },
+  okBtnContainer: {
+    width: '100%',
+    marginTop: 12,
+    height: 45,
+    flexDirection: 'row',
+  },
+  btnDownload: {
+    width: '30%',
+    height: '100%',
+    backgroundColor: c.dwnldProgress,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 9999,
+  },
+  TextBtnDwnldProgress: {
+    fontFamily: 'Mulish-Black',
+    color: c.text,
+  }
 });
 
 export default stylesMain;

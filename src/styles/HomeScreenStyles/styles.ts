@@ -47,7 +47,7 @@ const stylesApp = (c: themeColors ) => StyleSheet.create({
         fontSize: 17,
         textAlign: 'center',
         fontFamily: 'Mulish-SemiBold',
-        color: c.text,
+        color: 'white',
     },
     wrapperCustom: {
         backgroundColor: '#D14346',
