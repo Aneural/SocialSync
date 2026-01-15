@@ -42,11 +42,18 @@ React.useEffect(() => {
     return;
   }
   const id = setInterval(() => {
-    setDotCount(prev => (prev % 3) + 1);
-  }, 400);
+    setDotCount(prev => (prev % 4) + 1);
+  }, 600);
   return () => clearInterval(id);
-  },[downloading]);
-  const dot = ''.repeat(dotCount);
+},[downloading]);
+
+
+let dot = '.'.repeat(dotCount);
+if (dotCount === 4) {
+  dot.replace(/./g, '')
+  setDotCount(0);
+};
+
 
   const toggleDownoadTab = () => {
     setShowCard(showCard);
@@ -69,8 +76,8 @@ React.useEffect(() => {
   const downloadAction =  async () => {
     if(downloading) return;
 
-    if(!isTtUrl(URL)) {
-        ToastAndroid.show('URL Invalida', ToastAndroid.SHORT);
+    if(URL === '') {
+        ToastAndroid.show('Ingrese un link', ToastAndroid.SHORT);
         return;
     }
     setDownloading(true);

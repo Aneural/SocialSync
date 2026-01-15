@@ -2,9 +2,9 @@ import { ToastAndroid } from 'react-native';
 import ReactNativeBlobUtil, { type FetchBlobResponse, type StatefulPromise } from 'react-native-blob-util';
 import Clipboard from '@react-native-clipboard/clipboard';
 const { fs } = ReactNativeBlobUtil;
+
+
 const regexTTUrl = /^.*https:\/\/(?:m|www|vm)?\.?tiktok\.com\/((?:.*\b(?:(?:usr|v|embed|user|video)\/|\?shareId=|\&item_id=)(\d+))|\w+)/;
-
-
 export const  rapidapiKeyToken = 'cb61098b1bmsh6061a77b0c02809p13f3a7jsn8039441d8fd5';
 
 // Verificar un formato de URL valido para el sitio de TT
