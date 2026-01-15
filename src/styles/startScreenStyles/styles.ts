@@ -6,7 +6,9 @@ const stylesMain = (c: themeColors) => StyleSheet.create({
     backgroundColor: c.bg,
   },
   bgScreen:{
+    position: 'absolute',
     height: '100%',
+    width: '100%'
   },
   childHeaderTitle: {
     flexDirection: 'row',
@@ -95,7 +97,8 @@ const stylesMain = (c: themeColors) => StyleSheet.create({
     borderRadius: 4,
     padding: 12,
     width: '85%',
-    height: 150,
+    height: '22%',
+    minHeight: 180,
     alignContent: 'center',
     justifyContent: 'center',
   },
@@ -111,18 +114,17 @@ const stylesMain = (c: themeColors) => StyleSheet.create({
     backgroundColor: '#7b2cbf',
   },
   progressText: {
-    marginTop: 6,
     alignSelf: 'flex-end',
     fontFamily: 'GoogleSansCode-Bold',
     fontSize: 12,
-    color: c.text,
+    color: c.startScreenText,
   },
   downloadingText: {
     fontFamily:'GoogleSansCode-Bold',
-    color: c.text,
+    color: c.startScreenText,
   },
   absolute: {
-    position: "absolute",
+    position: 'absolute',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgba(27, 27, 28, 0.55)',
@@ -131,23 +133,35 @@ const stylesMain = (c: themeColors) => StyleSheet.create({
     bottom: 0,
     right: 0
   },
-  okBtnContainer: {
-    width: '100%',
-    marginTop: 12,
+  cancelBtnContainer: {
+    marginTop: 10,
     height: 45,
-    flexDirection: 'row',
+    alignSelf: 'flex-end',
   },
-  btnDownload: {
+  cancelBtn: {
     width: '30%',
     height: '100%',
-    backgroundColor: c.dwnldProgress,
+    backgroundColor: c.cancelBtnStartScreen,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 9999,
   },
-  TextBtnDwnldProgress: {
+  btnCancelText: {
     fontFamily: 'Mulish-Black',
     color: c.text,
+  },
+  btnCerrar: {
+    alignSelf: 'flex-end',
+    width: 28,
+    height: 25,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 9999,
+    backgroundColor: c.closeBtnStartScreen,
+  },
+  btnCerrarText: {
+    color: c.text,
+    fontWeight: 'bold'
   }
 });
 
