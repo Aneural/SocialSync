@@ -1,110 +1,26 @@
 // core
 import React, { useState, useMemo, useRef } from 'react';
-import { View, Text, TouchableOpacity, TextInput, Alert, useColorScheme, ImageBackground } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput, Alert, useColorScheme, ImageBackground, ToastAndroid } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import ReactNativeBlobUtil, { FetchBlobResponse, StatefulPromise } from 'react-native-blob-util';
 import type { RootNavigationProp } from '@/app/routes/navigation';
 
 // custom
 import HeaderApp from '@/app/components/headerApp';
-import Clipboard from '@react-native-clipboard/clipboard';
 import colors from '@/styles/colors';
 import stylesMain from '@/styles/startScreenStyles/styles';
 import Faq from '@/icons/faq.svg';
 import OverlayShadow from '@/app/components/overlayShadow';
+
+import { isTtUrl, pasteUrl, getDownloableUrl, downloadFunction, rapidapiKeyToken, downloadTaskRef } from '@/api/api';
 
 // media
 import TtLogo from '@/icons/tt_logo_black.svg';
 import Dots from '@/icons/dots_vertical.svg';
 import darkmodeBG from '@/assets/darkmode_bg.jpg'
 import SyncLogo from '@/assets/sync.svg';
-const { fs } = ReactNativeBlobUtil;
-const regexTTUrl = /^.*https:\/\/(?:m|www|vm)?\.?tiktok\.com\/((?:.*\b(?:(?:usr|v|embed|user|video)\/|\?shareId=|\&item_id=)(\d+))|\w+)/;
-const  rapidapiKeyToken = 'cb61098b1bmsh6061a77b0c02809p13f3a7jsn8039441d8fd5';
-
 
 type Props = {
   navigation: RootNavigationProp;
-};
-
-// Verificar un formato de URL valido para el sitio de TT
-const isTtUrl = (URL: string) => {
-  if (regexTTUrl.test(URL.trim()))
-    return true;
-  else
-    return false;
-};
-
-// Funcion para el boton de 'Pegar URL'
-const pasteUrl = async () => {
-  const clip = await Clipboard.getString();
-  
-  if(!isTtUrl(clip)){
-      Alert.alert("Url Invalida");
-      return;
-  }
-  return clip;
-};
-
-const getDownloableUrl = async (tturl: string, token: string) => {
-  const ApiURL = 'https://tiktok-downloader-download-tiktok-videos-without-watermark.p.rapidapi.com/rich_response/index';
-
-  const askUrl = await fetch(`${ApiURL}?url=${encodeURIComponent(tturl)}`, {
-    method: 'GET',
-    headers: {
-      'x-rapidapi-key': token,
-		  'x-rapidapi-host': 'tiktok-downloader-download-tiktok-videos-without-watermark.p.rapidapi.com'
-    },
-  });
-
-  if(!askUrl.ok) {
-    const text = await askUrl.text().catch(() => '');
-    throw new Error(`API error ${askUrl.status}: ${text}`);
-  }
-
-  const data = await askUrl.json();
-
-  const directUrl = data?.video?.[0];
-
-  if (!directUrl)
-  {
-    throw new Error('No se obtuvo link directo para descargar del servidor');
-  }
-  else return directUrl;
-}
-
-// Funcion para el boton 'Descargar'
-const downloadFunction = async (
-  directUrl: string,
-  onProgress?: (pct: number) => void
-) => {
-  const DownloadPath = fs.dirs.DownloadDir;
-  const fileName = `video_${Date.now()}.mp4`;
-  const path = `${DownloadPath}/${fileName}`;
-
-  const task = ReactNativeBlobUtil.config({
-    fileCache: true,
-    path,
-    addAndroidDownloads: {
-      useDownloadManager: true,
-      notification: true,
-      path,
-      title: fileName,
-      description: 'Descargando video...',
-      mime: 'video/mp4',
-      mediaScannable: true,
-    },
-  }).fetch('GET', directUrl);
-
-  task.progress({ interval: 200 }, (received, total) => {
-    if (total > 0) {
-      const pct = received / total; // 0..1
-      onProgress?.(pct);
-    }
-  });
-
-  const res = await task;
-  return res.path();
 };
 
 // Render principal
@@ -124,7 +40,7 @@ React.useEffect(() => {
   }, 400);
   return () => clearInterval(id);
 }, [downloading]);
-const dot = '.'.repeat(dotCount);
+const dot = ''.repeat(dotCount);
 
 
   // color mode | styles related
@@ -197,13 +113,16 @@ const dot = '.'.repeat(dotCount);
               onPressOut={async () => {
                 try {
                   if(!isTtUrl(URL)) {
-                    Alert.alert('URL Invalida');
+                    ToastAndroid.show('URL Invalida', ToastAndroid.SHORT);
                     return;
                   }
-
+                  const directUrl = await getDownloableUrl(URL, rapidapiKeyToken);
+                  if(directUrl === null) {
+                    ToastAndroid.show('El url no es de un video', ToastAndroid.SHORT);
+                    return;
+                  }
                   setDownloading(true);
                   setProgress(0);
-                  const directUrl = await getDownloableUrl(URL, rapidapiKeyToken);
                   const savedPath = await downloadFunction(directUrl, (pct) => {setProgress(pct)});
                   Alert.alert('Listo', `Guardado en ${savedPath}`);
                 }catch (e) {
@@ -222,7 +141,7 @@ const dot = '.'.repeat(dotCount);
           </View>
         </View>
         </OverlayShadow>
-        {/* downloading && */ (
+        {downloading && (
             <View style={styles.absolute}>
               <View style={[styles.progressWrap]}>
                 <Text style={styles.downloadingText} key={dot}>
@@ -238,6 +157,7 @@ const dot = '.'.repeat(dotCount);
                   >
                     <Text style={styles.TextBtnDwnldProgress}>
                       {progress === 1 ? 'Ok' : 'Cancelar'}
+
                     </Text>
                   </TouchableOpacity>
                 </View>
