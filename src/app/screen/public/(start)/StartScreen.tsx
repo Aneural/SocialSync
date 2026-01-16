@@ -1,6 +1,6 @@
 // core
 import React, { useState, useMemo, useRef } from 'react';
-import { View, Text, TouchableOpacity, TextInput, useColorScheme, ImageBackground, ToastAndroid } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput, useColorScheme, ImageBackground, ToastAndroid, BackHandler } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import type { RootNavigationProp } from '@/app/routes/navigation';
 
@@ -11,13 +11,14 @@ import colors from '@/styles/colors';
 import stylesMain from '@/styles/startScreenStyles/styles';
 import Faq from '@/icons/faq.svg';
 import OverlayShadow from '@/app/components/overlayShadow';
-import { pasteUrl, isTtUrl, rapidapiKeyToken, getDownloableUrl, downloadFunction } from '@/api/api';
+import { pasteUrl, rapidapiKeyToken, getDownloableUrl, downloadFunction } from '@/api/api';
 
 
 // media
 import TtLogo from '@/icons/tt_logo_black.svg';
 import Dots from '@/icons/dots_vertical.svg';
-import darkmodeBG from '@/assets/darkmode_bg.jpg'
+import darkmodeBG from '@/assets/darkmode_bg.jpg';
+import lightmodeBG from '@/assets/ligthmode_bg.png'
 import SyncLogo from '@/assets/sync.svg';
 import safePress from '@/enviroments/safePress';
 
@@ -61,11 +62,17 @@ if (dotCount === 4) {
 
   // color mode | styles related
   const scheme = useColorScheme() ?? 'light';
-  const c = scheme === 'dark' ? colors.dark : colors.light;
-  const logoColor = c ? 'rgba(255,255,255,0.75)' : 'rgba(255,255,255,0.75)';
-  const iconColor = c ? '#F3CA91' : '#9CA3AF';
+  const isDark = scheme === 'dark';
+  const colorMode = isDark ? colors.dark : colors.light;
+  const placeHolderTextInput = isDark ? 'rgba(233,236,242,0.35)' : 'rgba(25, 26, 26, 0.35)';
+  const selectionColorTextInput = colorMode ? '#2e6cd7ff' : 'rgba(30, 27, 46, 0.45)';
+  const cursorColorTextInput = colorMode ? '#000000ef' : 'rgb(246,216,174,0.8)';
+  const logoColor = isDark ? 'rgba(255,255,255,0.75)' : 'rgba(255,255,255,0.75)';
+  const iconColor = isDark ? '#E6C17A' : '#E6C17A';
+  const colorOverlay = isDark ? 'rgba(20, 20, 20, 0.5)' : 'rgba(20, 20, 20, 0.5)';
+  const bg_mode = isDark ? darkmodeBG : lightmodeBG;
 
-  const styles = useMemo(() => stylesMain(c), [c]); 
+  const styles = useMemo(() => stylesMain(colorMode), [colorMode]); 
 
   const pasteLink = async () => {
     const clip = await pasteUrl();
@@ -109,11 +116,12 @@ if (dotCount === 4) {
   return (
     <SafeAreaView style= {[styles.headerBgColor, styles.bgScreen]}>
       <ImageBackground
+        key={scheme}
         style={{flex: 1}}
-        source={darkmodeBG}
+        source={bg_mode}
         blurRadius={2}
         >
-        <OverlayShadow style={{flex: 1}} colorOne={'rgba(20, 20, 20, 0.3)'} colorTwo={'rgba(0,0,0,0.75)'}>
+        <OverlayShadow style={{flex: 1}} colorOne={colorOverlay} colorTwo={'rgba(0,0,0,0.2)'}>
         <HeaderApp>
           <View style={styles.childHeaderTitle}> 
             <SyncLogo width={38} height={38} fill={logoColor} 
@@ -142,13 +150,13 @@ if (dotCount === 4) {
             value={URL}
             onChangeText={(URL) => setUrl(URL)}
             placeholder='Ingresa una URL' 
-            placeholderTextColor= {c ? 'rgb(246,216,174,0.4)' : 'gray' }
+            placeholderTextColor= {placeHolderTextInput}
+            cursorColor={cursorColorTextInput}
+            selectionColor={selectionColorTextInput}
+            style={styles.inputBox}
             autoCapitalize='none'
             autoCorrect={false}
             returnKeyType='done'
-            cursorColor="rgb(246,216,174,0.8)"
-            selectionColor="#898980"
-            style={styles.inputBox}
             editable={downloading ? false:true}
             >
             </TextInput>
@@ -169,7 +177,7 @@ if (dotCount === 4) {
         </View>
         </OverlayShadow>
         {downloading && showCard && (
-            <View style={styles.absolute}>
+            <View style={styles.modalContainer}>
               <View style={[styles.progressWrap]}>
                 <TouchableOpacity
                   onPressOut={toggleDownoadTab}

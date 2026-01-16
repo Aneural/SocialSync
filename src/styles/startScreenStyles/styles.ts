@@ -30,9 +30,11 @@ const stylesMain = (c: themeColors) => StyleSheet.create({
     height: 180,
     alignSelf: 'center',
     alignItems: 'center',
+    borderWidth: 0.3,
     borderRadius: 18,
     gap: 25,
     backgroundColor: c.inputContainer,
+    borderColor: c.inputContainerBorder,
     elevation: 8,
     shadowColor: c.inputContainerShadow,
   },
@@ -53,16 +55,17 @@ const stylesMain = (c: themeColors) => StyleSheet.create({
   title: {
     fontFamily: 'GoogleSansCode-Bold',
     fontSize: 16,
-    color: c.strtTitle,
+    color: c.textLogoTitle,
   },
   inputBox: {
     width: '95%',
     height: 60,
     marginTop: 10,
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: c.inputBoxBorder,
     borderRadius: 12,
-    color: c.text
+    color: c.inputBoxText,
+    backgroundColor: c.inputBoxBg,
   },
   btnContainer: {
     width: '95%',
@@ -78,14 +81,17 @@ const stylesMain = (c: themeColors) => StyleSheet.create({
     borderRadius: 30,
     alignItems: 'center',
     justifyContent: 'center',
+    elevation: 8,
   },
   pasteLinkBtn: {
-    backgroundColor: c.pasteUrlBton,
+    backgroundColor: c.pasteUrlBtn,
     borderColor: c.pasteUrlBtnBorder,
+    elevation: 0,
   },
   downloadBtn: {
-    backgroundColor: c.dwnloadBtn,
-    borderColor: c.dwnBtnBorder,
+    backgroundColor: c.downloadBtn,
+    borderColor: c.downloadBtnBorder,
+    shadowColor: c.downloadBtnShadow,
   },
   textBtn: {
     fontFamily: 'GoogleSansCode-Bold',
@@ -93,7 +99,9 @@ const stylesMain = (c: themeColors) => StyleSheet.create({
     color: c.cardText,
   },
   progressWrap: {
-    backgroundColor: c.bg,
+    backgroundColor: c.modalContainer,
+    borderColor: c.modalContainerBorder,
+    borderWidth: 1,
     borderRadius: 4,
     padding: 12,
     width: '85%',
@@ -106,28 +114,28 @@ const stylesMain = (c: themeColors) => StyleSheet.create({
     height: 25,
     borderRadius: 6,
     borderWidth: 1,
-    borderColor: c.text,
+    borderColor: c.modalTrackBorder,
+    backgroundColor: c.modalTrackBackground,
     overflow: 'hidden',
   },
   progressFill: {
     height: '100%',
-    backgroundColor: '#7b2cbf',
+    backgroundColor: c.modalProgressFill,
   },
   progressText: {
     alignSelf: 'flex-end',
     fontFamily: 'GoogleSansCode-Bold',
     fontSize: 12,
-    color: c.startScreenText,
+    color: c.modalProgressInt,
   },
   downloadingText: {
     fontFamily:'GoogleSansCode-Bold',
-    color: c.startScreenText,
+    color: c.modalDownloadingText,
   },
-  absolute: {
+  modalContainer: {
     position: 'absolute',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(27, 27, 28, 0.55)',
     top: 0,
     left: 0,
     bottom: 0,
@@ -141,14 +149,16 @@ const stylesMain = (c: themeColors) => StyleSheet.create({
   cancelBtn: {
     width: '30%',
     height: '100%',
-    backgroundColor: c.cancelBtnStartScreen,
+    backgroundColor: c.modalcancelBtnBg,
+    borderWidth: 0.4,
+    borderColor: c.modalCancelBtnBorder,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 9999,
   },
   btnCancelText: {
     fontFamily: 'Mulish-Black',
-    color: c.text,
+    color: c.modalCancelText,
   },
   btnCerrar: {
     alignSelf: 'flex-end',
@@ -157,10 +167,10 @@ const stylesMain = (c: themeColors) => StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 9999,
-    backgroundColor: c.closeBtnStartScreen,
+    backgroundColor: c.modalcloseBtnBg,
   },
   btnCerrarText: {
-    color: c.text,
+    color: c.modalCloseBtnText,
     fontWeight: 'bold'
   }
 });
